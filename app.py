@@ -61,7 +61,7 @@ def get_vectorstore(text_chunks):
     
 
 def get_llm(api_token):
-    return ChatGoogleGenerativeAI(model="gemini-1.5-pro-latest", google_api_key=api_token)
+    return ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", google_api_key=api_token)
 
 
 def get_conversation_chain(vectorstore, api_token):
