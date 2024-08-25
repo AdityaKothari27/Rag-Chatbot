@@ -15,6 +15,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.schema import HumanMessage, AIMessage
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 
 
@@ -48,7 +49,7 @@ def get_vectorstore(text_chunks):
         st.write("Loading HuggingFace embeddings model...")
         # embeddings = SentenceTransformer("intfloat/e5-mistral-7b-instruct")
         # embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
-        embeddings = HuggingFaceInstructEmbeddings(model_name="all-MiniLM-L6-v2")
+        embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         
         # embeddings = SentenceTransformer("Alibaba-NLP/gte-Qwen2-1.5B-instruct", trust_remote_code=True)
         st.write("Creating vector store with FAISS...")
