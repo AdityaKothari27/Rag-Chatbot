@@ -1,10 +1,10 @@
-langchain==0.2.14
-langchain_community==0.2.12
-langchain_google_genai==1.0.10
-langchain_groq==0.1.9
-langchain_huggingface==0.0.3
-PyPDF2==3.0.1
-streamlit==1.35.0
+langchain
+langchain_community
+langchain_google_genai
+langchain_groq
+langchain_huggingface
+PyPDF2
+streamlit
 instructorembedding
 faiss-cpu
 sentence-transformers==2.2.2
