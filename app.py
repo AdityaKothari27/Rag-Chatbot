@@ -16,6 +16,8 @@ from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.schema import HumanMessage, AIMessage
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.llms import HuggingFacePipeline
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
 
 
@@ -61,8 +63,28 @@ def get_vectorstore(text_chunks):
         return None
     
 
+# def get_llm(api_token):
+#     return ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", google_api_key=api_token)
+
+#BioGPT
+#PubMedBERT
+#medalpaca/medalpaca-13b
+
+
 def get_llm(api_token):
-    return ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", google_api_key=api_token)
+    model_name = "jiviai/biomistral-ft-10k"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForCausalLM.from_pretrained(model_name)
+    
+    pipe = pipeline(
+        "text-generation",
+        model=model,
+        tokenizer=tokenizer,
+        max_new_tokens=512,
+        temperature=0.7
+    )
+    
+    return HuggingFacePipeline(pipeline=pipe)
 
 
 def get_conversation_chain(vectorstore, api_token):
