@@ -4,5 +4,7 @@ langchain_google_genai==1.0.10
 langchain_groq==0.1.9
 langchain_huggingface==0.0.3
 PyPDF2==3.0.1
-sentence_transformers
+sentence-transformers
 streamlit==1.35.0
+instructorembedding
+faiss-cpu
