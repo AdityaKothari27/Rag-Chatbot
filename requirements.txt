@@ -7,4 +7,4 @@ PyPDF2
 streamlit
 instructorembedding
 faiss-cpu
-sentence-transformers==2.2.2
+sentence-transformers

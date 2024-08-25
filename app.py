@@ -44,9 +44,12 @@ def get_text_chunks(text):
 
 def get_vectorstore(text_chunks):
     try:
+
         st.write("Loading HuggingFace embeddings model...")
         # embeddings = SentenceTransformer("intfloat/e5-mistral-7b-instruct")
-        embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+        # embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl")
+        embeddings = HuggingFaceInstructEmbeddings(model_name="all-MiniLM-L6-v2")
+        
         # embeddings = SentenceTransformer("Alibaba-NLP/gte-Qwen2-1.5B-instruct", trust_remote_code=True)
         st.write("Creating vector store with FAISS...")
         vectorstore = FAISS.from_texts(texts=text_chunks, embedding=embeddings)
