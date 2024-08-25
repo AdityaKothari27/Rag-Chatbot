@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.embeddings import HuggingFaceInstructEmbeddings
@@ -159,7 +159,9 @@ def handle_userinput(user_question):
 
 
 def main():
-    load_dotenv()
+
+    #environment variables
+    # load_dotenv()
     
     st.set_page_config(page_title="Wellness AI", page_icon="🥗")
 
@@ -192,7 +194,8 @@ def main():
 
     st.header("Wellness AI 🥗")
     
-    gemini_api_token = os.getenv("GEMINI_API_KEY")
+    gemini_api_token = st.secrets["GEMINI_API_KEY"]
+    # gemini_api_token = os.getenv("GEMINI_API_KEY")
     if not gemini_api_token:
         st.error("Gemini API token is not set")
     else:
