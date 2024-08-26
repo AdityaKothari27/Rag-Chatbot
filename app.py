@@ -71,20 +71,40 @@ def get_vectorstore(text_chunks):
 #medalpaca/medalpaca-13b
 
 
+# def get_llm(api_token):
+#     model_name = "jiviai/biomistral-ft-10k"
+#     tokenizer = AutoTokenizer.from_pretrained(model_name)
+#     model = AutoModelForCausalLM.from_pretrained(model_name)
+    
+#     pipe = pipeline(
+#         "text-generation",
+#         model=model,
+#         tokenizer=tokenizer,
+#         max_new_tokens=512,
+#         temperature=0.7
+#     )
+    
+#     return HuggingFacePipeline(pipeline=pipe)
+
+# Tom158/Llama3_8B-Inst_NutritionAI
+# def get_llm(api_token):
+#     return HuggingFaceEndpoint(
+#         repo_id="sgarbi/bert-fda-nutrition-ner",
+#         huggingfacehub_api_token=api_token,
+#         task="text2text-generation",
+#         # max_new_tokens=249,
+#         model_kwargs={
+#             # "max_length": 249,
+            
+            
+#         }
+#     )
+
+
+
 def get_llm(api_token):
-    model_name = "jiviai/biomistral-ft-10k"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForCausalLM.from_pretrained(model_name)
-    
-    pipe = pipeline(
-        "text-generation",
-        model=model,
-        tokenizer=tokenizer,
-        max_new_tokens=512,
-        temperature=0.7
-    )
-    
-    return HuggingFacePipeline(pipeline=pipe)
+    return ChatGroq(groq_api_key=api_token, model_name='mixtral-8x7b-32768', temperature=0.4)
+
 
 
 def get_conversation_chain(vectorstore, api_token):
@@ -220,7 +240,7 @@ def main():
 
     st.header("Wellness AI 🥗")
     
-    gemini_api_token = st.secrets["GEMINI_API_KEY"]
+    gemini_api_token = st.secrets["GROQ_API_KEY"]
     # gemini_api_token = os.getenv("GEMINI_API_KEY")
     if not gemini_api_token:
         st.error("Gemini API token is not set")
