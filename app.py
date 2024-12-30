@@ -209,7 +209,7 @@ def main():
     #environment variables
     # load_dotenv()
     
-    st.set_page_config(page_title="Wellness AI", page_icon="🥗")
+    st.set_page_config(page_title="RAG Chatbot", page_icon="🤖✨")
 
     # st.markdown(
     # """
@@ -238,7 +238,7 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = []
 
-    st.header("Wellness AI 🥗")
+    st.header("RAG Chatbot ✨")
     
     gemini_api_token = st.secrets["GROQ_API_KEY"]
     # gemini_api_token = os.getenv("GEMINI_API_KEY")
@@ -274,13 +274,13 @@ def main():
                 else:
                     st.session_state.conversation = None
         
-        st.sidebar.markdown("""
-                ### Quick Nutrition Tips:
-                - Stay hydrated
-                - Eat a variety of colorful fruits and vegetables
-                - Choose whole grains over refined grains
-                - Limit processed foods and added sugars
-                """)
+        # st.sidebar.markdown("""
+        #         ### Quick Nutrition Tips:
+        #         - Stay hydrated
+        #         - Eat a variety of colorful fruits and vegetables
+        #         - Choose whole grains over refined grains
+        #         - Limit processed foods and added sugars
+        #         """)
 
 if __name__ == '__main__':
     main()
