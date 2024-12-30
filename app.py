@@ -267,9 +267,12 @@ def main():
                 st.write(raw_text[:1000]+"...")
                 
                 text_chunks = get_text_chunks(raw_text)
+                st.write("No. of Text chunks:")
                 st.write(len(text_chunks))
                 # st.write("Text chunks:")
                 # st.write(text_chunks)
+                num_tokens = (len(raw_text)/4)
+                st.write("No. of tokens: ~", num_tokens)
                 
                 vectorstore = get_vectorstore(text_chunks)
                 if vectorstore:
