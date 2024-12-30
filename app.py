@@ -102,8 +102,12 @@ def get_vectorstore(text_chunks):
 
 
 
+# def get_llm(api_token):
+#     return ChatGroq(groq_api_key=api_token, model_name='mixtral-8x7b-32768', temperature=0.4)
+
 def get_llm(api_token):
-    return ChatGroq(groq_api_key=api_token, model_name='mixtral-8x7b-32768', temperature=0.4)
+    return ChatGroq(groq_api_key=api_token, model_name='llama-3.3-70b-versatile', temperature=0.4)
+
 
 
 
@@ -254,7 +258,7 @@ def main():
 
     with st.sidebar:
         st.subheader("Your Document:")
-        pdf_docs = st.file_uploader("Upload your PDF file", type="pdf", accept_multiple_files=True)
+        pdf_docs = st.file_uploader("Upload your PDF file (Currently, it only supports prompts with upto ~4500 words due to rate limits.)", type="pdf", accept_multiple_files=True)
         
         if st.button("Process"):
             with st.spinner("Processing..."):
